@@ -45,4 +45,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'simple_token_authentication', '~> 1.0'
-
+gem 'koala', '~> 3.0'
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.5'
+gem 'faker', '~> 2.6'
