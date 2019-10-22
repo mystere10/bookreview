@@ -5,11 +5,13 @@ class Api::V1::ReviewsController < ApplicationController
 
   def index
     @reviews = @book.reviews
-    json_response "List of books", true, {reviews: @reviews}, :ok
+    review_serializer = parse_json @reviews
+    json_response "List of books", true, {reviews: review_serializer}, :ok
   end
 
   def show
-    json_response "One book", true, {books: @review}, :ok
+    review_serializer = parse_json @review
+    json_response "One book", true, {books: review_serializer}, :ok
   end
 
   def create
@@ -18,7 +20,8 @@ class Api::V1::ReviewsController < ApplicationController
     review.book_id = params[:book_id]
 
     if review.save
-      json_response "Review created", true, {review: review}, :ok
+      review_serializer = parse_json review
+      json_response "Review created", true, {review: review_serializer}, :ok
     else
       json_response "Review not created", false, {}, :unprocessed_intity
     end
@@ -27,7 +30,8 @@ class Api::V1::ReviewsController < ApplicationController
   def update
     if correct_user @review.user
       if @review.update review_params
-        json_response "Review updated", true, {review: @review}, :ok
+        review_serializer = parse_json @review
+        json_response "Review updated", true, {review: review_serializer}, :ok
       else
         json_response "Updating review failed", false, {}, :unprocessed_intity
       end
@@ -50,7 +54,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   private
   def load_book
-    @book = Book.find_by id: params[:id]
+    @book = Book.find_by id: params[:book_id]
     unless @book.present?
       json_response "No book found", false, {}, :not_found
     end
