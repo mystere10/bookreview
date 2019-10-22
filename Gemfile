@@ -38,6 +38,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet', '~> 6.0', '>= 6.0.2'
+  gem 'dotenv-rails', '~> 2.7', '>= 2.7.5'
 end
 
 
@@ -46,8 +48,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'koala', '~> 3.0'
-gem 'dotenv-rails', '~> 2.7', '>= 2.7.5'
 gem 'faker', '~> 2.6'
 gem 'pry', '~> 0.12.2'
 gem 'pry-byebug', '~> 3.7'
 gem 'active_model_serializers', '~> 0.10.10'
+gem 'counter_culture', '~> 2.0'
+gem 'paperclip', '~> 6.1'

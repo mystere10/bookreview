@@ -1,7 +1,7 @@
 class Api::V1::BooksController < ApplicationController
   before_action :load_book, only: :show
   def index
-    @books = Book.all
+    @books = Book.all.includes(:reviews)
     book_serializer = parse_json @books
     json_response "Index of books is successfull", true, {books: book_serializer}, :ok
   end
